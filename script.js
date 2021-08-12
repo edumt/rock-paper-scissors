@@ -13,7 +13,39 @@ function computerPlay() {
       return computerPlay();
   }
 }
-function playRound(playerSelection, computerSelection) {}
+
+function playRound(playerSelection, computerSelection) {
+  // returns if player 'win', 'lose' or 'draw' the round
+  switch (playerSelection) {
+    case "rock":
+      switch (computerSelection) {
+        case "rock":
+          return "draw";
+        case "paper":
+          return "lose";
+        case "scissors":
+          return "win";
+      }
+    case "paper":
+      switch (computerSelection) {
+        case "rock":
+          return "win";
+        case "paper":
+          return "draw";
+        case "scissors":
+          return "lose";
+      }
+    case "scissors":
+      switch (computerSelection) {
+        case "rock":
+          return "lose";
+        case "paper":
+          return "win";
+        case "scissors":
+          return "draw";
+      }
+  }
+}
 /*
 function checkProbabilityDensity(iterations) {
   //Monte Carlo for checking probability density

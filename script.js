@@ -1,5 +1,9 @@
+function random(numberOfIntegers) {
+  return Math.floor(Math.random() * numberOfIntegers);
+}
+
 function computerPlay() {
-  let play = Math.floor(Math.random() * 3);
+  let play = random(3);
 
   switch (play) {
     case 0:
@@ -51,6 +55,17 @@ function updateStats() {
   roundsStat.innerHTML = `Rounds played: ${roundsPlayed}`;
 }
 
+function easterEgg() {
+  // 10% chance to proc
+  if (random(10) === 7) {
+    rock_img.src = "img/the-rock.jpg";
+    rock_title.innerText = "The Rock!";
+  } else if (rock_title.innerText === "The Rock!") {
+    rock_img.src = "img/rock.svg";
+    rock_title.innerText = "Rock";
+  }
+}
+
 function playRound(playerSelection) {
   if (roundsPlayed < maxRounds) {
     switch (roundResult(playerSelection, computerPlay())) {
@@ -67,6 +82,7 @@ function playRound(playerSelection) {
     roundsPlayed += 1;
     updateStats();
   }
+  easterEgg();
 
   if (roundsPlayed === maxRounds) {
     if (wins > loses) {
@@ -85,6 +101,8 @@ let winsStat = document.getElementById("wins");
 let drawsStat = document.getElementById("draws");
 let losesStat = document.getElementById("loses");
 let roundsStat = document.getElementById("rounds");
+let rock_img = document.getElementById("rock-img");
+let rock_title = document.getElementById("rock-title");
 /*
 function checkProbabilityDensity(iterations) {
   //Monte Carlo for checking probability density

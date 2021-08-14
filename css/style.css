@@ -1,37 +1,36 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  margin: 25px 50px;
-  height: 95vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-image: linear-gradient(180deg, #eee, #fff 100px, #fff);
 }
 
-header {
-  text-align: center;
-}
-.cards {
-  display: flex;
-  text-align: center;
-  justify-content: space-around;
-}
-.cards div {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
+.container {
+  max-width: 960px;
 }
 
-#test {
-  font-size: calc(24px + 8vw);
+.game-header {
+  max-width: 700px;
 }
 
-.play-me {
-  cursor: pointer;
-  margin: 0 auto;
-  width: 50%;
+.card:hover {
+  color: white;
+}
+.card:hover .card-header {
+  background-color: #0275d8;
+}
+.card:hover div.card-body {
+  border: #0275d8 1px solid;
+}
+.card img {
+  max-width: 100%;
+}
+
+@media (max-width: 400px) {
+  div.card-header {
+    display: none;
+  }
+  div.card-body button {
+    display: none;
+  }
+  .card img {
+    max-width: 100%;
+  }
 }

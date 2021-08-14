@@ -1,21 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Rock, Paper, Scissors!</title>
-
-    <style></style>
-  </head>
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link rel="stylesheet" href="css/style.css" />
+      <title>Rock, Paper, Scissors!</title>
+    </head>
   <body>
-    <header class="">
-      <h1>Rock, Paper, Scissors!</h1>
-      <p>play agaisnt the computer blablabla best of 5</p>
+    <div class="container py-3">
+      <header>
+        <div class="game-header p-3 pb-md-4 mx-auto text-center">
+          <h1 class="display-4 fw-normal">Rock, paper, scissors!</h1>
+          <p class="fs-5 text-muted">
+            Play against the machine on a best of 5 match to hone your skills!
+          </p>
+        </div>
+      </header>
 
-      <div class="stats">
+      <main>
+        <div class="row row-cols-1 row-cols-3 mb-3 text-center">
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm"onclick="playRound('rock')">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal" id="rock-title">Rock</h4>
+              </div>
+              <div class="card-body">
+                <img src="img/rock.svg" id="rock-img" alt="" />
+                <button type="button" class="w-100 btn btn-lg btn-primary">Play me!</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm"onclick="playRound('paper')">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Paper</h4>
+              </div>
+              <div class="card-body">
+                <img src="img/paper.svg" alt="" />
+                <button type="button" class="w-100 btn btn-lg btn-primary">Play me!</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm"onclick="playRound('scissors')">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Scissors</h4>
+              </div>
+              <div class="card-body">
+                <img src="img/scissors.svg" alt="" />
+                <button type="button" class="w-100 btn btn-lg btn-primary">Play me!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <div class="row stats text-center">
+         
         <h2></h2>
         <p id="rounds">Rounds played: 0</p>
         <p>
@@ -23,28 +66,12 @@
           <span id="draws">Draws: 0</span>
           <span id="loses">Loses: 0</span>
         </p>
-      </div>
-    </header>
-    <main class="container d-flex">
-      <div class="cards">
-        <!-- https://openmoji.org/ -->
-        <div id="" onclick="playRound('rock')">
-          <h3>Rock</h3>
-          <img src="img/rock.svg" width="300" height="300" alt="" />
-          <button class="play-me">Play me!</button>
-        </div>
-        <div id="" onclick="playRound('paper')">
-          <h3>Paper</h3>
-          <img src="img/paper.svg" width="300" height="300" alt="" />
-          <button class="play-me">Play me!</button>
-        </div>
-        <div id="" onclick="playRound('scissors')">
-          <h3>Scissors</h3>
-          <img src="img/scissors.svg" width="300" height="300" alt="" />
-          <button class="play-me">Play me!</button>
-        </div>
-      </div>
-    </main>
+      
+    </div>
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        
+      </footer>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

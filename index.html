@@ -17,7 +17,7 @@
           <p class="fs-5 text-muted">
             Play against the machine on a best of <span id="max-rounds">7</span> match to hone your skills!
           </p>
-          <h3 class="fw-normal" id="play-area">Choose a play!</h3>
+          <h3 class="fw-normal py-4" id="play-area">Choose a play!</h3>
         </div>
       </header>
 
@@ -29,7 +29,7 @@
                 <h4 class="my-0 fw-normal" id="rock-title">Rock</h4>
               </div>
               <div class="card-body">
-                <img src="img/rock.svg" id="rock-img" alt="" />
+                <img src="img/rock.svg" id="rock-img" alt="rock" />
                 <button type="button" class="w-100 btn btn-lg btn-primary">Play me!</button>
               </div>
             </div>
@@ -40,7 +40,7 @@
                 <h4 class="my-0 fw-normal">Paper</h4>
               </div>
               <div class="card-body">
-                <img src="img/paper.svg" alt="" />
+                <img src="img/paper.svg" alt="paper" />
                 <button type="button" class="w-100 btn btn-lg btn-primary">Play me!</button>
               </div>
             </div>
@@ -51,26 +51,26 @@
                 <h4 class="my-0 fw-normal">Scissors</h4>
               </div>
               <div class="card-body">
-                <img src="img/scissors.svg" alt="" />
+                <img src="img/scissors.svg" alt="scissors" />
                 <button type="button" class="w-100 btn btn-lg btn-primary">Play me!</button>
               </div>
             </div>
           </div>
         </div>
       </main>
-      <div class="row stats text-center">
-         
+      <div class="row text-center">
+         <button onclick="resetMatch()" id="reset-button" type="button" class="btn btn-outline-secondary">Reset match</button>
         <h2></h2>
-        <p id="rounds">Rounds played: 0</p>
-        <p>
+        <p class="h4 fw-normal" id="rounds">Rounds played: 0</p>
+        <p class="h5 fw-normal">
           <span id="wins">Wins: 0</span>
           <span id="draws">Draws: 0</span>
           <span id="loses">Loses: 0</span>
         </p>
       
     </div>
-      <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        
+      <footer class="mt-4 pt-2 my-md-5 pt-md-5 border-top">
+        test
       </footer>
     </div>
     <script src="script.js"></script>

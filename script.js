@@ -74,16 +74,23 @@ function playFeedback(text) {
   playFeedbackStep("Playing");
   setTimeout(function () {
     playFeedbackStep("Playing.");
-  }, 200);
+  }, feedbackDelay / 4);
   setTimeout(function () {
     playFeedbackStep("Playing..");
-  }, 400);
+  }, (feedbackDelay * 2) / 4);
   setTimeout(function () {
     playFeedbackStep("Playing...");
-  }, 600);
+  }, (feedbackDelay * 3) / 4);
   setTimeout(function () {
     playFeedbackStep(text);
-  }, 800);
+  }, feedbackDelay);
+}
+
+function resetMatch() {
+  (wins = 0), (draws = 0), (loses = 0), (roundsPlayed = 0);
+  updateStats();
+  playFeedbackStep("The match was reset. Choose a play!");
+  //todo: clear all timeouts
 }
 
 function playRound(playerSelection) {
@@ -106,25 +113,21 @@ function playRound(playerSelection) {
     roundsPlayed += 1;
     setTimeout(function () {
       updateStats();
-    }, 800);
+    }, feedbackDelay);
   }
   easterEgg();
 
   if (roundsPlayed === maxRounds) {
     //todo: change those texts to something better
-    if (wins > loses) {
-      setTimeout(function () {
+    setTimeout(function () {
+      if (wins > loses) {
         playFeedbackStep(`You won the best of ${maxRounds} match!`);
-      }, 800);
-    } else if (wins < loses) {
-      setTimeout(function () {
+      } else if (wins < loses) {
         playFeedbackStep(`You lost the best of ${maxRounds} match!`);
-      }, 800);
-    } else {
-      setTimeout(function () {
+      } else {
         playFeedbackStep(`The best of ${maxRounds} match tied!`);
-      }, 800);
-    }
+      }
+    }, 2 * feedbackDelay);
   }
 }
 
@@ -132,7 +135,8 @@ let wins = 0,
   draws = 0,
   loses = 0,
   roundsPlayed = 0,
-  maxRounds = 7;
+  maxRounds = 7,
+  feedbackDelay = 500;
 
 document.getElementById("max-rounds").innerText = maxRounds;
 

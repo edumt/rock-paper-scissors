@@ -13,7 +13,7 @@ function computerPlay() {
 
 function roundResult(playerSelection, computerSelection) {
   // returns if player 'win', 'lose' or 'draw' the round
-  switch (playerSelection.toLowerCase().trim()) {
+  switch (playerSelection) {
     case "rock":
       switch (computerSelection) {
         case "rock":
@@ -44,43 +44,16 @@ function roundResult(playerSelection, computerSelection) {
   }
 }
 
-function playRound(playerSelection) {
-  switch (roundResult(playerSelection, computerPlay())) {
-    case "win":
-      wins += 1;
-      break;
-    case "draw":
-      draws += 1;
-      break;
-    case "lose":
-      loses += 1;
-      break;
-  }
-  round += 1;
-  console.log("clicked");
-  console.log(round);
-  console.log(maxRounds);
-  if (round === maxRounds) {
-    console.log("something");
-  }
+function updateStats() {
+  winsStat.innerHTML = `Wins: ${wins}`;
+  drawsStat.innerHTML = `Draws: ${draws}`;
+  losesStat.innerHTML = `Loses: ${loses}`;
+  roundsStat.innerHTML = `Rounds played: ${roundsPlayed}`;
 }
 
-let wins = 0,
-  draws = 0,
-  loses = 0,
-  round = 0,
-  maxRounds = 5; // default number of rounds played
-
-/*
-function game() {
-  let wins = 0,
-    draws = 0,
-    loses = 0,
-    rounds = 5; // default number of rounds played
-
-  for (let i = 0; i < rounds; i++) {
-    result = roundResult(prompt(), computerPlay());
-    switch (result) {
+function playRound(playerSelection) {
+  if (roundsPlayed < maxRounds) {
+    switch (roundResult(playerSelection, computerPlay())) {
       case "win":
         wins += 1;
         break;
@@ -91,17 +64,27 @@ function game() {
         loses += 1;
         break;
     }
-    console.log(result);
+    roundsPlayed += 1;
+    updateStats();
   }
-  console.log(`Wins: ${wins}`);
-  console.log(`Draws: ${draws}`);
-  console.log(`Loses: ${loses}`);
+
+  if (roundsPlayed === maxRounds) {
+    if (wins > loses) {
+      console.log("something");
+    }
+  }
 }
-*/
-//game();
 
-//console.log(playRound(prompt(), computerPlay()));
+let wins = 0,
+  draws = 0,
+  loses = 0,
+  roundsPlayed = 0,
+  maxRounds = 5; // default number of rounds played
 
+let winsStat = document.getElementById("wins");
+let drawsStat = document.getElementById("draws");
+let losesStat = document.getElementById("loses");
+let roundsStat = document.getElementById("rounds");
 /*
 function checkProbabilityDensity(iterations) {
   //Monte Carlo for checking probability density

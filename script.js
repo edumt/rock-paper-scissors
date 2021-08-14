@@ -58,29 +58,57 @@ function updateStats() {
 function easterEgg() {
   // 10% chance to proc
   if (random(10) === 7) {
-    rock_img.src = "img/the-rock.jpg";
-    rock_title.innerText = "The Rock!";
-  } else if (rock_title.innerText === "The Rock!") {
-    rock_img.src = "img/rock.svg";
-    rock_title.innerText = "Rock";
+    rockImg.src = "img/the-rock.jpg";
+    rockTitle.innerText = "The Rock!";
+  } else if (rockTitle.innerText === "The Rock!") {
+    rockImg.src = "img/rock.svg";
+    rockTitle.innerText = "Rock";
   }
+}
+
+function playFeedbackStep(text) {
+  playArea.innerText = text;
+}
+
+function playFeedback(text) {
+  setTimeout(function () {
+    playFeedbackStep("Playing");
+  }, 200);
+  setTimeout(function () {
+    playFeedbackStep("Playing.");
+  }, 400);
+  setTimeout(function () {
+    playFeedbackStep("Playing..");
+  }, 600);
+  setTimeout(function () {
+    playFeedbackStep("Playing...");
+  }, 800);
+  setTimeout(function () {
+    playFeedbackStep(text);
+  }, 1000);
 }
 
 function playRound(playerSelection) {
   if (roundsPlayed < maxRounds) {
-    switch (roundResult(playerSelection, computerPlay())) {
+    let result = roundResult(playerSelection, computerPlay());
+    switch (result) {
       case "win":
+        playFeedback("Yay! You won!");
         wins += 1;
         break;
       case "draw":
+        playFeedback("It's a draw!");
         draws += 1;
         break;
       case "lose":
+        playFeedback("Oh no! You lost!");
         loses += 1;
         break;
     }
     roundsPlayed += 1;
-    updateStats();
+    setTimeout(function () {
+      updateStats();
+    }, 1000);
   }
   easterEgg();
 
@@ -101,8 +129,9 @@ let winsStat = document.getElementById("wins");
 let drawsStat = document.getElementById("draws");
 let losesStat = document.getElementById("loses");
 let roundsStat = document.getElementById("rounds");
-let rock_img = document.getElementById("rock-img");
-let rock_title = document.getElementById("rock-title");
+let rockImg = document.getElementById("rock-img");
+let rockTitle = document.getElementById("rock-title");
+let playArea = document.getElementById("play-area");
 /*
 function checkProbabilityDensity(iterations) {
   //Monte Carlo for checking probability density

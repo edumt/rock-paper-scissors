@@ -71,21 +71,19 @@ function playFeedbackStep(text) {
 }
 
 function playFeedback(text) {
-  setTimeout(function () {
-    playFeedbackStep("Playing");
-  }, 200);
+  playFeedbackStep("Playing");
   setTimeout(function () {
     playFeedbackStep("Playing.");
-  }, 400);
+  }, 200);
   setTimeout(function () {
     playFeedbackStep("Playing..");
-  }, 600);
+  }, 400);
   setTimeout(function () {
     playFeedbackStep("Playing...");
-  }, 800);
+  }, 600);
   setTimeout(function () {
     playFeedbackStep(text);
-  }, 1000);
+  }, 800);
 }
 
 function playRound(playerSelection) {
@@ -93,7 +91,7 @@ function playRound(playerSelection) {
     let result = roundResult(playerSelection, computerPlay());
     switch (result) {
       case "win":
-        playFeedback("Yay! You won!");
+        playFeedback("Yay! You won this round!");
         wins += 1;
         break;
       case "draw":
@@ -101,20 +99,31 @@ function playRound(playerSelection) {
         draws += 1;
         break;
       case "lose":
-        playFeedback("Oh no! You lost!");
+        playFeedback("Oh no! You lost this round!");
         loses += 1;
         break;
     }
     roundsPlayed += 1;
     setTimeout(function () {
       updateStats();
-    }, 1000);
+    }, 800);
   }
   easterEgg();
 
   if (roundsPlayed === maxRounds) {
+    //todo: change those texts to something better
     if (wins > loses) {
-      console.log("something");
+      setTimeout(function () {
+        playFeedbackStep(`You won the best of ${maxRounds} match!`);
+      }, 800);
+    } else if (wins < loses) {
+      setTimeout(function () {
+        playFeedbackStep(`You lost the best of ${maxRounds} match!`);
+      }, 800);
+    } else {
+      setTimeout(function () {
+        playFeedbackStep(`The best of ${maxRounds} match tied!`);
+      }, 800);
     }
   }
 }
@@ -123,7 +132,9 @@ let wins = 0,
   draws = 0,
   loses = 0,
   roundsPlayed = 0,
-  maxRounds = 5; // default number of rounds played
+  maxRounds = 7;
+
+document.getElementById("max-rounds").innerText = maxRounds;
 
 let winsStat = document.getElementById("wins");
 let drawsStat = document.getElementById("draws");

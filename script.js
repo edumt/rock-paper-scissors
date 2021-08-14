@@ -8,15 +8,12 @@ function computerPlay() {
       return "paper";
     case 2:
       return "scissors";
-    default:
-      // handles Math.random() === 1
-      return computerPlay();
   }
 }
 
-function playRound(playerSelection, computerSelection) {
+function roundResult(playerSelection, computerSelection) {
   // returns if player 'win', 'lose' or 'draw' the round
-  switch (playerSelection) {
+  switch (playerSelection.toLowerCase().trim()) {
     case "rock":
       switch (computerSelection) {
         case "rock":
@@ -46,6 +43,65 @@ function playRound(playerSelection, computerSelection) {
       }
   }
 }
+
+function playRound(playerSelection) {
+  switch (roundResult(playerSelection, computerPlay())) {
+    case "win":
+      wins += 1;
+      break;
+    case "draw":
+      draws += 1;
+      break;
+    case "lose":
+      loses += 1;
+      break;
+  }
+  round += 1;
+  console.log("clicked");
+  console.log(round);
+  console.log(maxRounds);
+  if (round === maxRounds) {
+    console.log("something");
+  }
+}
+
+let wins = 0,
+  draws = 0,
+  loses = 0,
+  round = 0,
+  maxRounds = 5; // default number of rounds played
+
+/*
+function game() {
+  let wins = 0,
+    draws = 0,
+    loses = 0,
+    rounds = 5; // default number of rounds played
+
+  for (let i = 0; i < rounds; i++) {
+    result = roundResult(prompt(), computerPlay());
+    switch (result) {
+      case "win":
+        wins += 1;
+        break;
+      case "draw":
+        draws += 1;
+        break;
+      case "lose":
+        loses += 1;
+        break;
+    }
+    console.log(result);
+  }
+  console.log(`Wins: ${wins}`);
+  console.log(`Draws: ${draws}`);
+  console.log(`Loses: ${loses}`);
+}
+*/
+//game();
+
+//console.log(playRound(prompt(), computerPlay()));
+
 /*
 function checkProbabilityDensity(iterations) {
   //Monte Carlo for checking probability density

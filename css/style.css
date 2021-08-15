@@ -31,3 +31,10 @@
     display: none;
   }
 }
+
+@media (max-width: 340px) {
+  #stats {
+    display: flex;
+    flex-direction: column;
+  }
+}

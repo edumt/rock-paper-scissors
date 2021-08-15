@@ -1,3 +1,20 @@
+let wins = 0,
+  draws = 0,
+  loses = 0,
+  roundsPlayed = 0,
+  maxRounds = 7,
+  feedbackDelay = 400;
+
+document.getElementById("max-rounds").innerText = maxRounds;
+
+let winsStat = document.getElementById("wins");
+let drawsStat = document.getElementById("draws");
+let losesStat = document.getElementById("loses");
+let roundsStat = document.getElementById("rounds");
+let rockImg = document.getElementById("rock-img");
+let rockTitle = document.getElementById("rock-title");
+let playArea = document.getElementById("play-area");
+
 function random(numberOfIntegers) {
   return Math.floor(Math.random() * numberOfIntegers);
 }
@@ -49,18 +66,22 @@ function roundResult(playerSelection, computerSelection) {
 }
 
 function updateStats() {
+  roundsStat.innerHTML = `Rounds played: ${roundsPlayed}`;
   winsStat.innerHTML = `Wins: ${wins}`;
   drawsStat.innerHTML = `Draws: ${draws}`;
   losesStat.innerHTML = `Loses: ${loses}`;
-  roundsStat.innerHTML = `Rounds played: ${roundsPlayed}`;
+}
+
+function isEasterEggActive() {
+  return rockTitle.innerText === "The Rock!";
 }
 
 function easterEgg() {
   // 10% chance to proc
-  if (random(10) === 7) {
+  if (random(10) === 7 && !isEasterEggActive()) {
     rockImg.src = "img/the-rock.jpg";
     rockTitle.innerText = "The Rock!";
-  } else if (rockTitle.innerText === "The Rock!") {
+  } else if (isEasterEggActive()) {
     rockImg.src = "img/rock.svg";
     rockTitle.innerText = "Rock";
   }
@@ -89,7 +110,7 @@ function playFeedback(text) {
 function resetMatch() {
   (wins = 0), (draws = 0), (loses = 0), (roundsPlayed = 0);
   updateStats();
-  playFeedbackStep("The match was reset. Choose a play!");
+  playFeedbackStep("Choose a play!");
   //todo: clear all timeouts
 }
 
@@ -118,35 +139,18 @@ function playRound(playerSelection) {
   easterEgg();
 
   if (roundsPlayed === maxRounds) {
-    //todo: change those texts to something better
     setTimeout(function () {
       if (wins > loses) {
-        playFeedbackStep(`You won the best of ${maxRounds} match!`);
+        playFeedbackStep(`You won the match, you're the best! Or was it just luck? 🤭`);
       } else if (wins < loses) {
-        playFeedbackStep(`You lost the best of ${maxRounds} match!`);
+        playFeedbackStep(`You lost the match 😔 Keep on, practice makes perfect!`);
       } else {
-        playFeedbackStep(`The best of ${maxRounds} match tied!`);
+        playFeedbackStep(`The match tied 😬 You'll win next time!`);
       }
     }, 2 * feedbackDelay);
   }
 }
 
-let wins = 0,
-  draws = 0,
-  loses = 0,
-  roundsPlayed = 0,
-  maxRounds = 7,
-  feedbackDelay = 500;
-
-document.getElementById("max-rounds").innerText = maxRounds;
-
-let winsStat = document.getElementById("wins");
-let drawsStat = document.getElementById("draws");
-let losesStat = document.getElementById("loses");
-let roundsStat = document.getElementById("rounds");
-let rockImg = document.getElementById("rock-img");
-let rockTitle = document.getElementById("rock-title");
-let playArea = document.getElementById("play-area");
 /*
 function checkProbabilityDensity(iterations) {
   //Monte Carlo for checking probability density

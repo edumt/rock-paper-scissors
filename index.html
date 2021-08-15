@@ -17,7 +17,7 @@
           <p class="fs-5 text-muted">
             Play against the machine on a best of <span id="max-rounds">7</span> match to hone your skills!
           </p>
-          <h3 class="fw-normal py-4" id="play-area">Choose a play!</h3>
+          <h3 class="fw-normal py-2" id="play-area">Choose a play!</h3>
         </div>
       </header>
 
@@ -61,17 +61,15 @@
       <div class="row text-center">
          <button onclick="resetMatch()" id="reset-button" type="button" class="btn btn-outline-secondary">Reset match</button>
         <h2></h2>
-        <p class="h4 fw-normal" id="rounds">Rounds played: 0</p>
+        <p class="h3 py-2 fw-normal" id="rounds">Rounds played: 0</p>
         <p class="h5 fw-normal">
-          <span id="wins">Wins: 0</span>
-          <span id="draws">Draws: 0</span>
-          <span id="loses">Loses: 0</span>
+          <span id="wins" class="mx-3 text-success">Wins: 0</span>
+          <span id="draws" class="mx-3 text-secondary">Draws: 0</span>
+          <span id="loses" class="mx-3 text-danger">Loses: 0</span>
         </p>
       
     </div>
-      <footer class="mt-4 pt-2 my-md-5 pt-md-5 border-top">
-        test
-      </footer>
+      
     </div>
     <script src="script.js"></script>
   </body>

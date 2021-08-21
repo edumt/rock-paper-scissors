@@ -12,6 +12,10 @@
 .card:hover .card-header {
   background-color: #0275d8;
 }
+
+div.card-body {
+  border: transparent 1px solid;
+}
 .card:hover div.card-body {
   border: #0275d8 1px solid;
 }
